@@ -391,6 +391,9 @@ ecma_gc_mark (ecma_object_t *object_p) /**< object to mark from */
     {
       JERRY_ASSERT (ECMA_PROPERTY_IS_PROPERTY_PAIR (prop_iter_p));
 
+      JERRY_ASSERT (prop_iter_p->types[0] != ECMA_PROPERTY_TYPE_DELETED
+                    || prop_iter_p->types[1] != ECMA_PROPERTY_TYPE_DELETED);
+
       ecma_gc_mark_property ((ecma_property_pair_t *) prop_iter_p, 0);
       ecma_gc_mark_property ((ecma_property_pair_t *) prop_iter_p, 1);
 
