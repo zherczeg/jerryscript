@@ -20,7 +20,9 @@
 #include "ecma-gc.h"
 #include "ecma-function-object.h"
 #include "ecma-lex-env.h"
+#include "ecma-literal-storage.h"
 #include "ecma-try-catch-macro.h"
+#include "jcontext.h"
 #include "js-parser.h"
 #include "lit-magic-strings.h"
 
@@ -164,6 +166,8 @@ ecma_builtin_function_dispatch_construct (const ecma_value_t *arguments_list_p, 
 #endif /* JERRY_ENABLE_LINE_INFO */
 
   ecma_compiled_code_t *bytecode_data_p = NULL;
+
+  JERRY_CONTEXT (source_cp) = ecma_find_or_create_literal_string ((const uint8_t *) "[new Function]", 14);
 
   ecma_value_t ret_value = parser_parse_script (arguments_buffer_p,
                                                 arguments_buffer_size,

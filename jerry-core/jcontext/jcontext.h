@@ -131,6 +131,12 @@ typedef struct
 #ifdef JMEM_STATS
   jmem_heap_stats_t jmem_heap_stats; /**< heap's memory usage statistics */
 #endif /* JMEM_STATS */
+
+  FILE *call_trace_file_p;
+  uint32_t call_trace_depth;
+  uint32_t next_id;
+  ecma_value_t source_cp;
+  bool trace_leave;
 } jerry_context_t;
 
 #ifndef CONFIG_ECMA_LCACHE_DISABLE

@@ -3023,6 +3023,80 @@ vm_execute (vm_frame_ctx_t *frame_ctx_p, /**< frame context */
 } /* vm_execute */
 
 /**
+ * Prints an ecma string to the trace file.
+ */
+static void
+print_str (FILE *call_trace_file_p,
+           ecma_string_t *string_p)
+{
+  if (string_p == NULL)
+    return;
+
+  ECMA_STRING_TO_UTF8_STRING (string_p, string_chars_p, string_size);
+
+  const lit_utf8_byte_t *chars_p = string_chars_p;
+  lit_utf8_size_t size = string_size;
+
+  while (size > 0)
+  {
+    fprintf (call_trace_file_p, "%c", *chars_p++);
+    size--;
+  }
+
+  ECMA_FINALIZE_UTF8_STRING (string_chars_p, string_size);
+} /* print_str */
+
+/**
+ * Prints spaces.
+ */
+static void
+print_indent (FILE *call_trace_file_p,
+              uint32_t indent)
+{
+  do
+  {
+    fprintf (call_trace_file_p, "  ");
+    indent--;
+  }
+  while (indent > 0);
+} /* print_indent */
+
+/**
+ * Prints the function data into the trace file.
+ */
+static void
+print_entry (uint32_t call_trace_depth,
+             ecma_string_t *name_p,
+             ecma_string_t *source_p,
+             uint32_t id,
+             uint32_t line,
+             uint32_t column)
+{
+  FILE *call_trace_file_p = JERRY_CONTEXT (call_trace_file_p);
+  uint32_t indent = 2 * call_trace_depth;
+
+  if (JERRY_CONTEXT (trace_leave))
+  {
+    JERRY_CONTEXT (trace_leave) = false;
+    fprintf (call_trace_file_p, ",");
+  }
+  fprintf (call_trace_file_p, "\n");
+
+  print_indent (call_trace_file_p, indent - 1);
+  fprintf (call_trace_file_p, "{\n");
+
+  print_indent (call_trace_file_p, indent);
+  fprintf (call_trace_file_p, "\"id\": %d, \"name\": \"", id);
+  print_str (call_trace_file_p, name_p);
+  fprintf (call_trace_file_p, "\", \"pos\": \"");
+  print_str (call_trace_file_p, source_p);
+  fprintf (call_trace_file_p, ":%d:%d\",\n", line, column);
+
+  print_indent (call_trace_file_p, indent);
+  fprintf (call_trace_file_p, "\"frames\" : [");
+} /* print_entry */
+
+/**
  * Run the code.
  *
  * @return ecma value
@@ -3038,6 +3112,11 @@ vm_run (const ecma_compiled_code_t *bytecode_header_p, /**< byte-code data heade
   ecma_value_t *literal_p;
   vm_frame_ctx_t frame_ctx;
   uint32_t call_stack_size;
+  ecma_string_t *name_p;
+  ecma_string_t *source_p;
+  uint32_t id;
+  uint32_t line;
+  uint32_t column;
 
   if (bytecode_header_p->status_flags & CBC_CODE_FLAGS_UINT16_ARGUMENTS)
   {
@@ -3048,6 +3127,12 @@ vm_run (const ecma_compiled_code_t *bytecode_header_p, /**< byte-code data heade
     literal_p -= args_p->register_end;
     frame_ctx.literal_start_p = literal_p;
     literal_p += args_p->literal_end;
+
+    name_p = ecma_get_string_from_value (args_p->name_cp);
+    source_p = ecma_get_string_from_value (args_p->source_cp);
+    id = args_p->id;
+    line = args_p->line;
+    column = args_p->column;
   }
   else
   {
@@ -3058,6 +3143,12 @@ vm_run (const ecma_compiled_code_t *bytecode_header_p, /**< byte-code data heade
     literal_p -= args_p->register_end;
     frame_ctx.literal_start_p = literal_p;
     literal_p += args_p->literal_end;
+
+    name_p = ecma_get_string_from_value (args_p->name_cp);
+    source_p = ecma_get_string_from_value (args_p->source_cp);
+    id = args_p->id;
+    line = args_p->line;
+    column = args_p->column;
   }
 
   frame_ctx.bytecode_header_p = bytecode_header_p;
@@ -3078,7 +3169,27 @@ vm_run (const ecma_compiled_code_t *bytecode_header_p, /**< byte-code data heade
   JERRY_VLA (ecma_value_t, stack, JERRY_MAX (call_stack_size, 1));
   frame_ctx.registers_p = stack;
 
-  return vm_execute (&frame_ctx, arg_list_p, arg_list_len);
+  uint32_t call_trace_depth = JERRY_CONTEXT (call_trace_depth);
+  JERRY_CONTEXT (call_trace_depth) = call_trace_depth + 1;
+
+  print_entry (call_trace_depth, name_p, source_p, id, line, column);
+
+  ecma_value_t ret_val = vm_execute (&frame_ctx, arg_list_p, arg_list_len);
+
+  call_trace_depth = JERRY_CONTEXT (call_trace_depth) - 1;
+  JERRY_CONTEXT (call_trace_depth) = call_trace_depth;
+
+  FILE *call_trace_file_p = JERRY_CONTEXT (call_trace_file_p);
+
+  fprintf (call_trace_file_p, "\n");
+  print_indent (call_trace_file_p, 2 * call_trace_depth);
+  fprintf (call_trace_file_p, "]\n");
+  print_indent (call_trace_file_p, 2 * call_trace_depth - 1);
+  fprintf (call_trace_file_p, "}");
+
+  JERRY_CONTEXT (trace_leave) = true;
+
+  return ret_val;
 } /* vm_run */
 
 /**

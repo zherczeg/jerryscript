@@ -243,6 +243,12 @@ typedef struct parser_saved_context_t
   struct parser_saved_context_t *prev_context_p; /**< last saved context */
   parser_stack_iterator_t last_statement;     /**< last statement position */
 
+  /* Function descriptor. */
+  const uint8_t *name_p;                      /**< name of the function */
+  uint32_t name_length;                       /**< length of the name */
+  uint32_t start_line;                        /**< start line of the function */
+  uint32_t start_column;                      /**< start column of the function */
+
   /* Literal types */
   uint16_t argument_count;                    /**< number of function arguments */
   uint16_t register_count;                    /**< number of registers */
@@ -275,6 +281,13 @@ typedef struct
   uint16_t stack_limit;                       /**< maximum stack depth */
   parser_saved_context_t *last_context_p;     /**< last saved context */
   parser_stack_iterator_t last_statement;     /**< last statement position */
+  const uint8_t *name_p;                      /**< name of the function */
+  uint32_t name_length;                       /**< length of the name */
+  uint32_t start_line;                        /**< start line of the function */
+  uint32_t start_column;                      /**< start column of the function */
+  uint32_t arrow_start_line;                  /**< start line of an arrow function */
+  uint32_t arrow_start_column;                /**< start column of an arrow function */
+  lexer_literal_t *func_name_p;               /**< name of the function statement */
 
   /* Lexer members. */
   lexer_token_t token;                        /**< current token */

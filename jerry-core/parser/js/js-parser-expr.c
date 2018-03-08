@@ -396,6 +396,7 @@ parser_parse_object_literal (parser_context_t *context_p) /**< context */
       }
 
       lexer_expect_object_literal_id (context_p, true);
+      context_p->func_name_p = context_p->lit_object.literal_p;
       literal_index = context_p->lit_object.index;
 
       parser_append_object_literal_item (context_p, literal_index, item_type);
@@ -717,6 +718,8 @@ parser_parse_unary_expression (parser_context_t *context_p, /**< context */
     {
       (*grouping_level_p)++;
       new_was_seen = 0;
+      context_p->arrow_start_line = context_p->token.line;
+      context_p->arrow_start_column = context_p->token.column;
     }
     else if (context_p->token.type == LEXER_KEYW_NEW)
     {

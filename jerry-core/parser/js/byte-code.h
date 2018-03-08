@@ -633,6 +633,11 @@ typedef struct
   uint8_t ident_end;                /**< end position of the identifier group */
   uint8_t const_literal_end;        /**< end position of the const literal group */
   uint8_t literal_end;              /**< end position of the literal group */
+  uint32_t id;                      /**< function creation id */
+  uint32_t line;                    /**< starting line of the function */
+  uint32_t column;                  /**< starting column of the function */
+  ecma_value_t name_cp;             /**< name of the function */
+  ecma_value_t source_cp;           /**< name of the source file */
 } cbc_uint8_arguments_t;
 
 /**
@@ -648,7 +653,16 @@ typedef struct
   uint16_t const_literal_end;       /**< end position of the const literal group */
   uint16_t literal_end;             /**< end position of the literal group */
   uint16_t padding;                 /**< an unused value */
+  uint32_t id;                      /**< function creation id */
+  uint32_t line;                    /**< starting line of the function */
+  uint32_t column;                  /**< starting column of the function */
+  ecma_value_t name_cp;             /**< name of the function */
+  ecma_value_t source_cp;           /**< name of the source file */
 } cbc_uint16_arguments_t;
+
+#define TRACE_SHIFT 2
+#define TRACE_GETTER 0x1
+#define TRACE_SETTER 0x2
 
 /**
  * Compact byte code status flags.

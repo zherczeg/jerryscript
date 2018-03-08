@@ -453,6 +453,7 @@ parser_parse_function_statement (parser_context_t *context_p) /**< context */
   {
     /* The most common case: the literal is the last literal. */
     name_p->status_flags |= LEXER_FLAG_VAR | LEXER_FLAG_INITIALIZED;
+    context_p->func_name_p = name_p;
     lexer_construct_function_object (context_p, status_flags);
     lexer_next_token (context_p);
     return;
@@ -477,6 +478,7 @@ parser_parse_function_statement (parser_context_t *context_p) /**< context */
 
   context_p->literal_count++;
 
+  context_p->func_name_p = literal_p;
   lexer_construct_function_object (context_p, status_flags);
   lexer_next_token (context_p);
 } /* parser_parse_function_statement */

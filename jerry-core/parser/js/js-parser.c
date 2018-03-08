@@ -1713,6 +1713,17 @@ parser_post_processing (parser_context_t *context_p) /**< context */
     args_p->const_literal_end = const_literal_end;
     args_p->literal_end = context_p->literal_count;
 
+    args_p->id = ++JERRY_CONTEXT (next_id);
+    args_p->line = context_p->start_line;
+    args_p->column = context_p->start_column;
+    args_p->name_cp = ECMA_NULL_POINTER;
+    if (context_p->name_p != NULL)
+    {
+      args_p->name_cp = ecma_find_or_create_literal_string (context_p->name_p,
+                                                            context_p->name_length);
+    }
+    args_p->source_cp = JERRY_CONTEXT (source_cp);
+
     compiled_code_p->status_flags |= CBC_CODE_FLAGS_UINT16_ARGUMENTS;
     byte_code_p += sizeof (cbc_uint16_arguments_t);
   }
@@ -1726,6 +1737,17 @@ parser_post_processing (parser_context_t *context_p) /**< context */
     args_p->ident_end = (uint8_t) ident_end;
     args_p->const_literal_end = (uint8_t) const_literal_end;
     args_p->literal_end = (uint8_t) context_p->literal_count;
+
+    args_p->id = ++JERRY_CONTEXT (next_id);
+    args_p->line = context_p->start_line;
+    args_p->column = context_p->start_column;
+    args_p->name_cp = ECMA_NULL_POINTER;
+    if (context_p->name_p != NULL)
+    {
+      args_p->name_cp = ecma_find_or_create_literal_string (context_p->name_p,
+                                                            context_p->name_length);
+    }
+    args_p->source_cp = JERRY_CONTEXT (source_cp);
 
     byte_code_p += sizeof (cbc_uint8_arguments_t);
   }
@@ -2254,10 +2276,15 @@ parser_parse_source (const uint8_t *arg_list_p, /**< function argument list */
     context.source_end_p = arg_list_p + arg_list_size;
   }
 
+  context.name_p = (const uint8_t *) "[toplevel]";
+  context.name_length = 10;
+
   context.stack_depth = 0;
   context.stack_limit = 0;
   context.last_context_p = NULL;
   context.last_statement.current_p = NULL;
+  context.start_line = 1;
+  context.start_column = 1;
 
   if (strict_mode)
   {
@@ -2416,6 +2443,11 @@ parser_save_context (parser_context_t *context_p, /**< context */
   saved_context_p->prev_context_p = context_p->last_context_p;
   saved_context_p->last_statement = context_p->last_statement;
 
+  saved_context_p->name_p = context_p->name_p;
+  saved_context_p->name_length = context_p->name_length;
+  saved_context_p->start_line = context_p->start_line;
+  saved_context_p->start_column = context_p->start_column;
+
   saved_context_p->argument_count = context_p->argument_count;
   saved_context_p->register_count = context_p->register_count;
   saved_context_p->literal_count = context_p->literal_count;
@@ -2468,6 +2500,11 @@ parser_restore_context (parser_context_t *context_p, /**< context */
   context_p->last_context_p = saved_context_p->prev_context_p;
   context_p->last_statement = saved_context_p->last_statement;
 
+  context_p->name_p = saved_context_p->name_p;
+  context_p->name_length = saved_context_p->name_length;
+  context_p->start_line = saved_context_p->start_line;
+  context_p->start_column = saved_context_p->start_column;
+
   context_p->argument_count = saved_context_p->argument_count;
   context_p->register_count = saved_context_p->register_count;
   context_p->literal_count = saved_context_p->literal_count;
@@ -2509,6 +2546,17 @@ parser_parse_function (parser_context_t *context_p, /**< context */
   parser_line_counter_t debugger_column = context_p->token.column;
 #endif /* JERRY_DEBUGGER */
 
+  if (context_p->status_flags & PARSER_IS_FUNC_EXPRESSION)
+  {
+    context_p->name_p = (const uint8_t *) "[function]";
+    context_p->name_length = 10;
+  }
+  else
+  {
+    context_p->name_p = context_p->func_name_p->u.char_p;
+    context_p->name_length = context_p->func_name_p->prop.length;
+  }
+
   lexer_next_token (context_p);
 
   if (context_p->status_flags & PARSER_IS_FUNC_EXPRESSION
@@ -2518,6 +2566,9 @@ parser_parse_function (parser_context_t *context_p, /**< context */
     lexer_construct_literal_object (context_p,
                                     &context_p->token.lit_location,
                                     LEXER_IDENT_LITERAL);
+
+    context_p->name_p = context_p->lit_object.literal_p->u.char_p;
+    context_p->name_length = context_p->lit_object.literal_p->prop.length;
 
 #ifdef JERRY_DEBUGGER
     if (JERRY_CONTEXT (debugger_flags) & JERRY_DEBUGGER_CONNECTED)
@@ -2555,6 +2606,9 @@ parser_parse_function (parser_context_t *context_p, /**< context */
     context_p->status_flags |= PARSER_LEXICAL_ENV_NEEDED | PARSER_NO_REG_STORE;
   }
 #endif /* JERRY_DEBUGGER */
+
+  context_p->start_line = context_p->token.line;
+  context_p->start_column = context_p->token.column;
 
   if (context_p->token.type != LEXER_LEFT_PAREN)
   {
@@ -2626,6 +2680,11 @@ parser_parse_arrow_function (parser_context_t *context_p, /**< context */
   parser_save_context (context_p, &saved_context);
   context_p->status_flags |= status_flags | PARSER_ARGUMENTS_NOT_NEEDED;
 
+  context_p->name_p = (const uint8_t *) "[arrow function]";
+  context_p->name_length = 16;
+  context_p->start_line = context_p->token.line;
+  context_p->start_column = context_p->token.column;
+
 #ifdef PARSER_DUMP_BYTE_CODE
   if (context_p->is_show_opcodes)
   {
@@ -2645,6 +2704,8 @@ parser_parse_arrow_function (parser_context_t *context_p, /**< context */
 
   if (status_flags & PARSER_ARROW_PARSE_ARGS)
   {
+    context_p->start_line = context_p->arrow_start_line;
+    context_p->start_column = context_p->arrow_start_column;
     parser_parse_function_arguments (context_p, LEXER_RIGHT_PAREN);
   }
   else
@@ -2840,6 +2901,8 @@ parser_parse_script (const uint8_t *arg_list_p, /**< function argument list */
                                           source_size,
                                           is_strict,
                                           &parser_error);
+
+  JERRY_CONTEXT (source_cp) = ECMA_NULL_POINTER;
 
   if (!*bytecode_data_p)
   {

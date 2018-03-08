@@ -20,6 +20,8 @@
 #include "ecma-globals.h"
 #include "ecma-helpers.h"
 #include "ecma-lex-env.h"
+#include "ecma-literal-storage.h"
+#include "jcontext.h"
 #include "js-parser.h"
 #include "vm.h"
 
@@ -95,6 +97,7 @@ ecma_op_eval_chars_buffer (const lit_utf8_byte_t *code_p, /**< code characters b
 #ifdef JERRY_ENABLE_LINE_INFO
   JERRY_CONTEXT (resource_name) = ecma_make_magic_string_value (LIT_MAGIC_STRING__EMPTY);
 #endif /* JERRY_ENABLE_LINE_INFO */
+  JERRY_CONTEXT (source_cp) = ecma_find_or_create_literal_string ((const uint8_t *) "[eval]", 6);
 
   ecma_value_t parse_status = parser_parse_script (NULL,
                                                    0,

@@ -184,6 +184,13 @@ jerry_init (jerry_init_flag_t flags) /**< combination of Jerry flags */
 
   jerry_make_api_available ();
 
+  FILE *call_trace_file_p = fopen ("call_trace.txt", "w");
+  fprintf (call_trace_file_p, "[");
+
+  JERRY_CONTEXT (call_trace_file_p) = call_trace_file_p;
+  JERRY_CONTEXT (call_trace_depth) = 1;
+  JERRY_CONTEXT (source_cp) = ECMA_NULL_POINTER;
+
   jmem_init ();
   ecma_init ();
 } /* jerry_init */
@@ -232,6 +239,11 @@ jerry_cleanup (void)
   }
 
   jmem_finalize ();
+  jerry_make_api_unavailable ();
+
+  FILE *call_trace_file_p = JERRY_CONTEXT (call_trace_file_p);
+  fprintf (call_trace_file_p, "\n]\n");
+  fclose (call_trace_file_p);
 } /* jerry_cleanup */
 
 /**
@@ -404,6 +416,11 @@ jerry_parse (const jerry_char_t *resource_name_p, /**< resource name (usually a 
   ecma_compiled_code_t *bytecode_data_p;
   ecma_value_t parse_status;
 
+  if (JERRY_CONTEXT (source_cp) == ECMA_NULL_POINTER)
+  {
+    JERRY_CONTEXT (source_cp) = ecma_find_or_create_literal_string ((const lit_utf8_byte_t *) "<unknown>", 9);
+  }
+
   parse_status = parser_parse_script (NULL,
                                       0,
                                       source_p,
@@ -478,6 +495,9 @@ jerry_parse_function (const jerry_char_t *resource_name_p, /**< resource name (u
     /* Must not be a NULL value. */
     arg_list_p = (const jerry_char_t *) "";
   }
+
+  JERRY_CONTEXT (source_cp) = ecma_find_or_create_literal_string (resource_name_p,
+                                                                  (lit_utf8_size_t) resource_name_length);
 
   parse_status = parser_parse_script (arg_list_p,
                                       arg_list_size,
