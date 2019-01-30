@@ -1,0 +1,71 @@
+
+--- Script parsing start ---
+
+
+--- Function parsing start ---
+
+  Note: legacy (non-strict) argument definition
+
+  [  0] CBC_ASSIGN_LITERAL_SET_IDENT idx:2->string(x) idx:1->var_ident(a)
+  [  1] CBC_ADD_TWO_LITERALS idx:0->var_ident(arguments) idx:1->var_ident(a)
+  [  0] CBC_RETURN
+
+Final byte code dump:
+
+  Maximum stack depth: 3
+  Flags: [small_lit_enc,no_lexical_env]
+  Argument range end: 1
+  Register range end: 2
+  Identifier range end: 2
+  Const literal range end: 3
+  Literal range end: 3
+
+   0 : CBC_ASSIGN_LITERAL_SET_IDENT idx:2(lit)->string(x) idx:1(reg)->var_ident(a)
+   3 : CBC_ADD_TWO_LITERALS idx:0(arg)->var_ident(arguments) idx:1(reg)->var_ident(a)
+   6 : CBC_RETURN
+
+Byte code size: 7 bytes
+
+--- Function parsing end ---
+
+  [  1] CBC_EXT_PUSH_NAMED_FUNC_EXPRESSION idx:1->function idx:0->string(eval)
+
+--- Function parsing start ---
+
+  Note: legacy (non-strict) argument definition
+
+  [  0] CBC_ASSIGN_LITERAL_SET_IDENT idx:2->string(y) idx:1->var_ident(a)
+  [  1] CBC_ADD_TWO_LITERALS idx:0->var_ident(eval) idx:1->var_ident(a)
+  [  0] CBC_RETURN
+
+Final byte code dump:
+
+  Maximum stack depth: 3
+  Flags: [small_lit_enc,no_lexical_env]
+  Argument range end: 1
+  Register range end: 2
+  Identifier range end: 2
+  Const literal range end: 3
+  Literal range end: 3
+
+   0 : CBC_ASSIGN_LITERAL_SET_IDENT idx:2(lit)->string(y) idx:1(reg)->var_ident(a)
+   3 : CBC_ADD_TWO_LITERALS idx:0(arg)->var_ident(eval) idx:1(reg)->var_ident(a)
+   6 : CBC_RETURN
+
+Byte code size: 7 bytes
+
+--- Function parsing end ---
+
+  [  2] CBC_EXT_PUSH_NAMED_FUNC_EXPRESSION idx:3->function idx:2->string(arguments)
+  [  1] CBC_CALL1_PUSH_RESULT
+
+--- Function parsing start ---
+
+  Note: legacy (non-strict) argument definition
+
+  Note: switch to strict mode
+
+
+--- Script parsing end ---
+
+Parse error 'Non strict argument definition.' at line: 7 col: 38

@@ -1,0 +1,59 @@
+
+--- Script parsing start ---
+
+  [  1] CBC_CREATE_OBJECT
+  [  2] CBC_ADD_TWO_LITERALS idx:0->var_ident(a) idx:1->ident(b)
+  [  3] CBC_PUSH_TRUE
+  [  1] CBC_EXT_SET_COMPUTED_PROPERTY
+  [  2] CBC_SUBTRACT_TWO_LITERALS idx:0->var_ident(a) idx:1->ident(b)
+  [  1] CBC_EXT_SET_COMPUTED_PROPERTY_LITERAL idx:2->ident(c)
+  [  2] CBC_MULTIPLY_TWO_LITERALS idx:0->var_ident(a) idx:1->ident(b)
+
+--- Function parsing start ---
+
+
+Final byte code dump:
+
+  Maximum stack depth: 0
+  Flags: [small_lit_enc,no_lexical_env]
+  Argument range end: 0
+  Register range end: 0
+  Identifier range end: 0
+  Const literal range end: 0
+  Literal range end: 0
+
+   0 : CBC_RETURN_WITH_BLOCK
+
+Byte code size: 1 bytes
+
+--- Function parsing end ---
+
+  [  1] CBC_EXT_SET_COMPUTED_GETTER idx:3->function
+  [  2] CBC_DIVIDE_TWO_LITERALS idx:0->var_ident(a) idx:1->ident(b)
+
+--- Function parsing start ---
+
+
+Final byte code dump:
+
+  Maximum stack depth: 1
+  Flags: [small_lit_enc,no_lexical_env]
+  Argument range end: 1
+  Register range end: 1
+  Identifier range end: 1
+  Const literal range end: 1
+  Literal range end: 1
+
+   0 : CBC_RETURN_WITH_BLOCK
+
+Byte code size: 1 bytes
+
+--- Function parsing end ---
+
+  [  1] CBC_EXT_SET_COMPUTED_SETTER idx:4->function
+  [  0] CBC_ASSIGN_SET_IDENT idx:0->var_ident(a)
+  [  1] CBC_CREATE_OBJECT
+
+--- Script parsing end ---
+
+Parse error 'Expected ']' token.' at line: 11 col: 9

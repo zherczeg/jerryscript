@@ -1,0 +1,122 @@
+
+--- Script parsing start ---
+
+  [  1] CBC_PUSH_LITERAL idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_LITERAL idx:1->ident(f)
+  [  0] CBC_CALL0_BLOCK
+  [  2] CBC_PUSH_TWO_LITERALS idx:1->ident(f) idx:2->ident(a)
+  [  0] CBC_CALL1_BLOCK
+  [  3] CBC_PUSH_THREE_LITERALS idx:1->ident(f) idx:2->ident(a) idx:3->ident(b)
+  [  0] CBC_CALL2_BLOCK
+  [  3] CBC_PUSH_THREE_LITERALS idx:1->ident(f) idx:2->ident(a) idx:3->ident(b)
+  [  4] CBC_PUSH_LITERAL idx:4->ident(c)
+  [  0] CBC_CALL_BLOCK byte_arg:3
+  [  1] CBC_PUSH_LITERAL idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+  [  3] CBC_PUSH_PROP_LITERAL_LITERAL_REFERENCE idx:5->ident(o) idx:6->string(f)
+  [  0] CBC_CALL0_PROP_BLOCK
+  [  3] CBC_PUSH_PROP_LITERAL_LITERAL_REFERENCE idx:5->ident(o) idx:6->string(f)
+  [  4] CBC_PUSH_LITERAL idx:2->ident(a)
+  [  0] CBC_CALL1_PROP_BLOCK
+  [  3] CBC_PUSH_PROP_LITERAL_LITERAL_REFERENCE idx:5->ident(o) idx:6->string(f)
+  [  5] CBC_PUSH_TWO_LITERALS idx:2->ident(a) idx:3->ident(b)
+  [  0] CBC_CALL2_PROP_BLOCK
+  [  3] CBC_PUSH_PROP_LITERAL_LITERAL_REFERENCE idx:5->ident(o) idx:6->string(f)
+  [  6] CBC_PUSH_THREE_LITERALS idx:2->ident(a) idx:3->ident(b) idx:4->ident(c)
+  [  0] CBC_CALL_PROP_BLOCK byte_arg:3
+  [  1] CBC_PUSH_LITERAL idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+
+--- Function parsing start ---
+
+
+Final byte code dump:
+
+  Maximum stack depth: 0
+  Flags: [small_lit_enc,no_lexical_env]
+  Argument range end: 0
+  Register range end: 0
+  Identifier range end: 0
+  Const literal range end: 0
+  Literal range end: 0
+
+   0 : CBC_RETURN_WITH_BLOCK
+
+Byte code size: 1 bytes
+
+--- Function parsing end ---
+
+
+--- Function parsing start ---
+
+
+Final byte code dump:
+
+  Maximum stack depth: 0
+  Flags: [small_lit_enc,no_lexical_env]
+  Argument range end: 0
+  Register range end: 0
+  Identifier range end: 0
+  Const literal range end: 0
+  Literal range end: 0
+
+   0 : CBC_RETURN_WITH_BLOCK
+
+Byte code size: 1 bytes
+
+--- Function parsing end ---
+
+  [  3] CBC_PUSH_THREE_LITERALS idx:1->ident(f) idx:7->function idx:8->function
+  [  0] CBC_CALL2_BLOCK
+  [  1] CBC_PUSH_LITERAL idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+
+Final byte code dump:
+
+  Maximum stack depth: 6
+  Flags: [small_lit_enc]
+  Argument range end: 0
+  Register range end: 0
+  Identifier range end: 6
+  Const literal range end: 7
+  Literal range end: 9
+
+   0 : CBC_PUSH_LITERAL idx:0(ident)->ident(next_statement)
+   2 : CBC_POP_BLOCK
+   3 : CBC_PUSH_LITERAL idx:1(ident)->ident(f)
+   5 : CBC_CALL0_BLOCK
+   6 : CBC_PUSH_TWO_LITERALS idx:1(ident)->ident(f) idx:2(ident)->ident(a)
+   9 : CBC_CALL1_BLOCK
+  10 : CBC_PUSH_THREE_LITERALS idx:1(ident)->ident(f) idx:2(ident)->ident(a) idx:3(ident)->ident(b)
+  14 : CBC_CALL2_BLOCK
+  15 : CBC_PUSH_THREE_LITERALS idx:1(ident)->ident(f) idx:2(ident)->ident(a) idx:3(ident)->ident(b)
+  19 : CBC_PUSH_LITERAL idx:4(ident)->ident(c)
+  21 : CBC_CALL_BLOCK byte_arg:3
+  23 : CBC_PUSH_LITERAL idx:0(ident)->ident(next_statement)
+  25 : CBC_POP_BLOCK
+  26 : CBC_PUSH_PROP_LITERAL_LITERAL_REFERENCE idx:5(ident)->ident(o) idx:6(lit)->string(f)
+  29 : CBC_CALL0_PROP_BLOCK
+  30 : CBC_PUSH_PROP_LITERAL_LITERAL_REFERENCE idx:5(ident)->ident(o) idx:6(lit)->string(f)
+  33 : CBC_PUSH_LITERAL idx:2(ident)->ident(a)
+  35 : CBC_CALL1_PROP_BLOCK
+  36 : CBC_PUSH_PROP_LITERAL_LITERAL_REFERENCE idx:5(ident)->ident(o) idx:6(lit)->string(f)
+  39 : CBC_PUSH_TWO_LITERALS idx:2(ident)->ident(a) idx:3(ident)->ident(b)
+  42 : CBC_CALL2_PROP_BLOCK
+  43 : CBC_PUSH_PROP_LITERAL_LITERAL_REFERENCE idx:5(ident)->ident(o) idx:6(lit)->string(f)
+  46 : CBC_PUSH_THREE_LITERALS idx:2(ident)->ident(a) idx:3(ident)->ident(b) idx:4(ident)->ident(c)
+  50 : CBC_CALL_PROP_BLOCK byte_arg:3
+  52 : CBC_PUSH_LITERAL idx:0(ident)->ident(next_statement)
+  54 : CBC_POP_BLOCK
+  55 : CBC_PUSH_THREE_LITERALS idx:1(ident)->ident(f) idx:7(lit)->function idx:8(lit)->function
+  59 : CBC_CALL2_BLOCK
+  60 : CBC_PUSH_LITERAL idx:0(ident)->ident(next_statement)
+  62 : CBC_POP_BLOCK
+  63 : CBC_RETURN_WITH_BLOCK
+
+Byte code size: 64 bytes
+
+Script parsing successfully completed. Total byte code size: 66 bytes
+
+--- Script parsing end ---
+

@@ -1,0 +1,175 @@
+
+--- Script parsing start ---
+
+  [  1] CBC_PUSH_LITERAL idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+  [  2] CBC_PUSH_TWO_LITERALS idx:2->ident(eval) idx:3->string(string)
+  [  2] CBC_EVAL
+  [  1] CBC_CALL1_PUSH_RESULT
+  [  0] CBC_ASSIGN_SET_IDENT_BLOCK idx:1->ident(a)
+  [  1] CBC_PUSH_LITERAL idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+  [  3] CBC_PUSH_THREE_LITERALS idx:2->ident(eval) idx:4->ident(arg1) idx:5->ident(arg2)
+  [  3] CBC_EVAL
+  [  0] CBC_CALL2_BLOCK
+  [  1] CBC_PUSH_LITERAL idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+  [  0] CBC_JUMP_FORWARD
+  [  1] CBC_PUSH_LITERAL idx:6->ident(nothing)
+  [  0] CBC_POP_BLOCK
+  [  3] CBC_PUSH_THREE_LITERALS idx:2->ident(eval) idx:4->ident(arg1) idx:5->ident(arg2)
+  [  3] CBC_EVAL
+  [  0] CBC_CALL2
+  [  0] CBC_JUMP_BACKWARD
+  [  1] CBC_PUSH_LITERAL idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+
+--- Function parsing start ---
+
+  [  1] CBC_PUSH_LITERAL idx:0->ident(next_statement)
+  [  0] CBC_POP
+  [  2] CBC_PUSH_TWO_LITERALS idx:2->ident(eval) idx:3->string(string)
+  [  2] CBC_EVAL
+  [  1] CBC_CALL1_PUSH_RESULT
+  [  0] CBC_ASSIGN_SET_IDENT idx:1->ident(a)
+  [  1] CBC_PUSH_LITERAL idx:0->ident(next_statement)
+  [  0] CBC_POP
+  [  3] CBC_PUSH_THREE_LITERALS idx:2->ident(eval) idx:4->ident(arg1) idx:5->ident(arg2)
+  [  3] CBC_EVAL
+  [  0] CBC_CALL2
+  [  1] CBC_PUSH_LITERAL idx:0->ident(next_statement)
+  [  0] CBC_POP
+
+Final byte code dump:
+
+  Maximum stack depth: 3
+  Flags: [small_lit_enc,arguments_needed]
+  Argument range end: 0
+  Register range end: 0
+  Identifier range end: 5
+  Const literal range end: 6
+  Literal range end: 6
+
+   0 : CBC_PUSH_LITERAL idx:0(ident)->ident(next_statement)
+   2 : CBC_POP
+   3 : CBC_PUSH_TWO_LITERALS idx:2(ident)->ident(eval) idx:5(lit)->string(string)
+   6 : CBC_EVAL
+   7 : CBC_CALL1_PUSH_RESULT
+   8 : CBC_ASSIGN_SET_IDENT idx:1(ident)->ident(a)
+  10 : CBC_PUSH_LITERAL idx:0(ident)->ident(next_statement)
+  12 : CBC_POP
+  13 : CBC_PUSH_THREE_LITERALS idx:2(ident)->ident(eval) idx:3(ident)->ident(arg1) idx:4(ident)->ident(arg2)
+  17 : CBC_EVAL
+  18 : CBC_CALL2
+  19 : CBC_PUSH_LITERAL idx:0(ident)->ident(next_statement)
+  21 : CBC_POP
+  22 : CBC_RETURN_WITH_BLOCK
+
+Byte code size: 23 bytes
+
+--- Function parsing end ---
+
+  [  1] CBC_PUSH_LITERAL idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_ADD_TWO_LITERALS idx:2->ident(eval) idx:1->ident(a)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_LITERAL idx:2->ident(eval)
+  [  1] CBC_ADD_RIGHT_LITERAL idx:2->ident(eval)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_LITERAL idx:2->ident(eval)
+  [  1] CBC_EVAL
+  [  1] CBC_CALL0_PUSH_RESULT
+  [  1] CBC_ADD_RIGHT_LITERAL idx:1->ident(a)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_LITERAL idx:2->ident(eval)
+  [  1] CBC_EVAL
+  [  1] CBC_CALL0_PUSH_RESULT
+  [  1] CBC_ADD_RIGHT_LITERAL idx:2->ident(eval)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_LITERAL idx:1->ident(a)
+  [  2] CBC_PUSH_LITERAL idx:2->ident(eval)
+  [  2] CBC_EVAL
+  [  2] CBC_CALL0_PUSH_RESULT
+  [  1] CBC_ADD
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_LITERAL idx:2->ident(eval)
+  [  2] CBC_PUSH_LITERAL idx:2->ident(eval)
+  [  2] CBC_EVAL
+  [  2] CBC_CALL0_PUSH_RESULT
+  [  1] CBC_ADD
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_LITERAL idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+
+Final byte code dump:
+
+  Maximum stack depth: 3
+  Flags: [small_lit_enc]
+  Argument range end: 0
+  Register range end: 0
+  Identifier range end: 7
+  Const literal range end: 8
+  Literal range end: 9
+
+   0 : CBC_INITIALIZE_VAR idx:0(ident)->var_ident(f) idx:8(lit)->function
+   3 : CBC_PUSH_LITERAL idx:1(ident)->ident(next_statement)
+   5 : CBC_POP_BLOCK
+   6 : CBC_PUSH_TWO_LITERALS idx:3(ident)->ident(eval) idx:7(lit)->string(string)
+   9 : CBC_EVAL
+  10 : CBC_CALL1_PUSH_RESULT
+  11 : CBC_ASSIGN_SET_IDENT_BLOCK idx:2(ident)->ident(a)
+  13 : CBC_PUSH_LITERAL idx:1(ident)->ident(next_statement)
+  15 : CBC_POP_BLOCK
+  16 : CBC_PUSH_THREE_LITERALS idx:3(ident)->ident(eval) idx:4(ident)->ident(arg1) idx:5(ident)->ident(arg2)
+  20 : CBC_EVAL
+  21 : CBC_CALL2_BLOCK
+  22 : CBC_PUSH_LITERAL idx:1(ident)->ident(next_statement)
+  24 : CBC_POP_BLOCK
+  25 : CBC_JUMP_FORWARD offset:11(->36)
+  27 : CBC_PUSH_LITERAL idx:6(ident)->ident(nothing)
+  29 : CBC_POP_BLOCK
+  30 : CBC_PUSH_THREE_LITERALS idx:3(ident)->ident(eval) idx:4(ident)->ident(arg1) idx:5(ident)->ident(arg2)
+  34 : CBC_EVAL
+  35 : CBC_CALL2
+  36 : CBC_JUMP_BACKWARD offset:9(->27)
+  38 : CBC_PUSH_LITERAL idx:1(ident)->ident(next_statement)
+  40 : CBC_POP_BLOCK
+  41 : CBC_PUSH_LITERAL idx:1(ident)->ident(next_statement)
+  43 : CBC_POP_BLOCK
+  44 : CBC_ADD_TWO_LITERALS idx:3(ident)->ident(eval) idx:2(ident)->ident(a)
+  47 : CBC_POP_BLOCK
+  48 : CBC_PUSH_LITERAL idx:3(ident)->ident(eval)
+  50 : CBC_ADD_RIGHT_LITERAL idx:3(ident)->ident(eval)
+  52 : CBC_POP_BLOCK
+  53 : CBC_PUSH_LITERAL idx:3(ident)->ident(eval)
+  55 : CBC_EVAL
+  56 : CBC_CALL0_PUSH_RESULT
+  57 : CBC_ADD_RIGHT_LITERAL idx:2(ident)->ident(a)
+  59 : CBC_POP_BLOCK
+  60 : CBC_PUSH_LITERAL idx:3(ident)->ident(eval)
+  62 : CBC_EVAL
+  63 : CBC_CALL0_PUSH_RESULT
+  64 : CBC_ADD_RIGHT_LITERAL idx:3(ident)->ident(eval)
+  66 : CBC_POP_BLOCK
+  67 : CBC_PUSH_LITERAL idx:2(ident)->ident(a)
+  69 : CBC_PUSH_LITERAL idx:3(ident)->ident(eval)
+  71 : CBC_EVAL
+  72 : CBC_CALL0_PUSH_RESULT
+  73 : CBC_ADD
+  74 : CBC_POP_BLOCK
+  75 : CBC_PUSH_LITERAL idx:3(ident)->ident(eval)
+  77 : CBC_PUSH_LITERAL idx:3(ident)->ident(eval)
+  79 : CBC_EVAL
+  80 : CBC_CALL0_PUSH_RESULT
+  81 : CBC_ADD
+  82 : CBC_POP_BLOCK
+  83 : CBC_PUSH_LITERAL idx:1(ident)->ident(next_statement)
+  85 : CBC_POP_BLOCK
+  86 : CBC_RETURN_WITH_BLOCK
+
+Byte code size: 87 bytes
+
+Script parsing successfully completed. Total byte code size: 110 bytes
+
+--- Script parsing end ---
+

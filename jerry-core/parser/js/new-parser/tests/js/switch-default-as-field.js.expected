@@ -1,0 +1,43 @@
+
+--- Script parsing start ---
+
+  [  2] CBC_PUSH_TWO_LITERALS idx:0->ident(x) idx:1->ident(a)
+  [  2] CBC_PUSH_PROP_LITERAL idx:2->string(default)
+  [  1] CBC_STRICT_EQUAL
+  [  0] CBC_BRANCH_IF_TRUE_FORWARD
+  [  0] CBC_JUMP_FORWARD
+  [  1] CBC_PUSH_LITERAL idx:1->ident(a)
+  [  0] CBC_BRANCH_IF_FALSE_FORWARD
+  [  1] CBC_PUSH_PROP_LITERAL_LITERAL idx:1->ident(a) idx:2->string(default)
+  [  1] CBC_JUMP_FORWARD
+  [  1] CBC_PUSH_PROP_LITERAL_LITERAL idx:1->ident(a) idx:3->string(case)
+  [  0] CBC_POP_BLOCK
+
+Final byte code dump:
+
+  Maximum stack depth: 2
+  Flags: [small_lit_enc]
+  Argument range end: 0
+  Register range end: 0
+  Identifier range end: 2
+  Const literal range end: 4
+  Literal range end: 4
+
+   0 : CBC_PUSH_TWO_LITERALS idx:0(ident)->ident(x) idx:1(ident)->ident(a)
+   3 : CBC_PUSH_PROP_LITERAL idx:2(lit)->string(default)
+   5 : CBC_STRICT_EQUAL
+   6 : CBC_BRANCH_IF_TRUE_FORWARD offset:2(->8)
+   8 : CBC_PUSH_LITERAL idx:1(ident)->ident(a)
+  10 : CBC_BRANCH_IF_FALSE_FORWARD offset:7(->17)
+  12 : CBC_PUSH_PROP_LITERAL_LITERAL idx:1(ident)->ident(a) idx:2(lit)->string(default)
+  15 : CBC_JUMP_FORWARD offset:5(->20)
+  17 : CBC_PUSH_PROP_LITERAL_LITERAL idx:1(ident)->ident(a) idx:3(lit)->string(case)
+  20 : CBC_POP_BLOCK
+  21 : CBC_RETURN_WITH_BLOCK
+
+Byte code size: 22 bytes
+
+Script parsing successfully completed. Total byte code size: 22 bytes
+
+--- Script parsing end ---
+

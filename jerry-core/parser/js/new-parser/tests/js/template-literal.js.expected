@@ -1,0 +1,90 @@
+
+--- Script parsing start ---
+
+  [  1] CBC_PUSH_LITERAL idx:0->string()
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_LITERAL idx:1->string(abc)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_NUMBER_POS_BYTE number:1
+  [  1] CBC_ADD_RIGHT_LITERAL idx:0->string()
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_LITERAL idx:2->string(${})
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_NUMBER_POS_BYTE number:1
+  [  1] CBC_ADD_RIGHT_LITERAL idx:0->string()
+  [  2] CBC_PUSH_NUMBER_POS_BYTE number:2
+  [  1] CBC_ADD
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_NUMBER_POS_BYTE number:1
+  [  1] CBC_ADD_RIGHT_LITERAL idx:3->string(,)
+  [  2] CBC_PUSH_NUMBER_POS_BYTE number:2
+  [  1] CBC_ADD
+  [  0] CBC_POP_BLOCK
+  [  2] CBC_EXT_PUSH_LITERAL_PUSH_NUMBER_POS_BYTE idx:4->string({) number:1
+  [  1] CBC_ADD
+  [  1] CBC_ADD_RIGHT_LITERAL idx:3->string(,)
+  [  2] CBC_PUSH_NUMBER_POS_BYTE number:2
+  [  1] CBC_ADD
+  [  1] CBC_ADD_RIGHT_LITERAL idx:5->string(})
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_ADD_TWO_LITERALS idx:6->ident(a) idx:0->string()
+  [  1] CBC_ADD_RIGHT_LITERAL idx:7->ident(b)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_ADD_TWO_LITERALS idx:4->string({) idx:6->ident(a)
+  [  1] CBC_ADD_RIGHT_LITERAL idx:3->string(,)
+  [  1] CBC_ADD_RIGHT_LITERAL idx:7->ident(b)
+  [  1] CBC_ADD_RIGHT_LITERAL idx:5->string(})
+  [  0] CBC_POP_BLOCK
+
+Final byte code dump:
+
+  Maximum stack depth: 2
+  Flags: [small_lit_enc]
+  Argument range end: 0
+  Register range end: 0
+  Identifier range end: 2
+  Const literal range end: 8
+  Literal range end: 8
+
+   0 : CBC_PUSH_LITERAL idx:2(lit)->string()
+   2 : CBC_POP_BLOCK
+   3 : CBC_PUSH_LITERAL idx:3(lit)->string(abc)
+   5 : CBC_POP_BLOCK
+   6 : CBC_PUSH_NUMBER_POS_BYTE number:1
+   8 : CBC_ADD_RIGHT_LITERAL idx:2(lit)->string()
+  10 : CBC_POP_BLOCK
+  11 : CBC_PUSH_LITERAL idx:4(lit)->string(${})
+  13 : CBC_POP_BLOCK
+  14 : CBC_PUSH_NUMBER_POS_BYTE number:1
+  16 : CBC_ADD_RIGHT_LITERAL idx:2(lit)->string()
+  18 : CBC_PUSH_NUMBER_POS_BYTE number:2
+  20 : CBC_ADD
+  21 : CBC_POP_BLOCK
+  22 : CBC_PUSH_NUMBER_POS_BYTE number:1
+  24 : CBC_ADD_RIGHT_LITERAL idx:5(lit)->string(,)
+  26 : CBC_PUSH_NUMBER_POS_BYTE number:2
+  28 : CBC_ADD
+  29 : CBC_POP_BLOCK
+  30 : CBC_EXT_PUSH_LITERAL_PUSH_NUMBER_POS_BYTE idx:6(lit)->string({) number:1
+  34 : CBC_ADD
+  35 : CBC_ADD_RIGHT_LITERAL idx:5(lit)->string(,)
+  37 : CBC_PUSH_NUMBER_POS_BYTE number:2
+  39 : CBC_ADD
+  40 : CBC_ADD_RIGHT_LITERAL idx:7(lit)->string(})
+  42 : CBC_POP_BLOCK
+  43 : CBC_ADD_TWO_LITERALS idx:0(ident)->ident(a) idx:2(lit)->string()
+  46 : CBC_ADD_RIGHT_LITERAL idx:1(ident)->ident(b)
+  48 : CBC_POP_BLOCK
+  49 : CBC_ADD_TWO_LITERALS idx:6(lit)->string({) idx:0(ident)->ident(a)
+  52 : CBC_ADD_RIGHT_LITERAL idx:5(lit)->string(,)
+  54 : CBC_ADD_RIGHT_LITERAL idx:1(ident)->ident(b)
+  56 : CBC_ADD_RIGHT_LITERAL idx:7(lit)->string(})
+  58 : CBC_POP_BLOCK
+  59 : CBC_RETURN_WITH_BLOCK
+
+Byte code size: 60 bytes
+
+Script parsing successfully completed. Total byte code size: 60 bytes
+
+--- Script parsing end ---
+

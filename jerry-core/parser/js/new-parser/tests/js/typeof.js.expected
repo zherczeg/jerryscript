@@ -1,0 +1,152 @@
+
+--- Script parsing start ---
+
+  [  1] CBC_PUSH_LITERAL idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_TYPEOF_IDENT idx:1->ident(ident)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_LITERAL idx:2->string(xx)
+  [  1] CBC_TYPEOF
+  [  0] CBC_POP_BLOCK
+
+--- Function parsing start ---
+
+
+Final byte code dump:
+
+  Maximum stack depth: 0
+  Flags: [small_lit_enc,no_lexical_env]
+  Argument range end: 0
+  Register range end: 0
+  Identifier range end: 0
+  Const literal range end: 0
+  Literal range end: 0
+
+   0 : CBC_RETURN_WITH_BLOCK
+
+Byte code size: 1 bytes
+
+--- Function parsing end ---
+
+  [  1] CBC_PUSH_LITERAL idx:3->function
+  [  1] CBC_TYPEOF
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_LITERAL idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_LITERAL idx:4->ident(func)
+  [  2] CBC_TYPEOF_IDENT idx:1->ident(ident)
+  [  0] CBC_CALL1_BLOCK
+  [  2] CBC_PUSH_TWO_LITERALS idx:4->ident(func) idx:2->string(xx)
+  [  2] CBC_TYPEOF
+  [  0] CBC_CALL1_BLOCK
+  [  1] CBC_PUSH_LITERAL idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+  [  2] CBC_PUSH_TWO_LITERALS idx:4->ident(func) idx:5->ident(arg)
+  [  3] CBC_TYPEOF_IDENT idx:1->ident(ident)
+  [  0] CBC_CALL2_BLOCK
+  [  3] CBC_PUSH_THREE_LITERALS idx:4->ident(func) idx:5->ident(arg) idx:2->string(xx)
+  [  3] CBC_TYPEOF
+  [  0] CBC_CALL2_BLOCK
+  [  1] CBC_PUSH_LITERAL idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_PROP_LITERAL_LITERAL idx:6->ident(a) idx:7->string(b)
+  [  1] CBC_TYPEOF
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_LITERAL idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_LOGICAL_NOT_LITERAL idx:1->ident(ident)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_LOGICAL_NOT_LITERAL idx:2->string(xx)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_LITERAL idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+  [  2] CBC_PUSH_TWO_LITERALS idx:4->ident(func) idx:1->ident(ident)
+  [  2] CBC_LOGICAL_NOT
+  [  0] CBC_CALL1_BLOCK
+  [  2] CBC_PUSH_TWO_LITERALS idx:4->ident(func) idx:2->string(xx)
+  [  2] CBC_LOGICAL_NOT
+  [  0] CBC_CALL1_BLOCK
+  [  1] CBC_PUSH_LITERAL idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+  [  3] CBC_PUSH_THREE_LITERALS idx:4->ident(func) idx:5->ident(arg) idx:1->ident(ident)
+  [  3] CBC_LOGICAL_NOT
+  [  0] CBC_CALL2_BLOCK
+  [  3] CBC_PUSH_THREE_LITERALS idx:4->ident(func) idx:5->ident(arg) idx:2->string(xx)
+  [  3] CBC_LOGICAL_NOT
+  [  0] CBC_CALL2_BLOCK
+  [  1] CBC_PUSH_LITERAL idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+
+Final byte code dump:
+
+  Maximum stack depth: 3
+  Flags: [small_lit_enc]
+  Argument range end: 0
+  Register range end: 0
+  Identifier range end: 5
+  Const literal range end: 7
+  Literal range end: 8
+
+   0 : CBC_PUSH_LITERAL idx:0(ident)->ident(next_statement)
+   2 : CBC_POP_BLOCK
+   3 : CBC_TYPEOF_IDENT idx:1(ident)->ident(ident)
+   5 : CBC_POP_BLOCK
+   6 : CBC_PUSH_LITERAL idx:5(lit)->string(xx)
+   8 : CBC_TYPEOF
+   9 : CBC_POP_BLOCK
+  10 : CBC_PUSH_LITERAL idx:7(lit)->function
+  12 : CBC_TYPEOF
+  13 : CBC_POP_BLOCK
+  14 : CBC_PUSH_LITERAL idx:0(ident)->ident(next_statement)
+  16 : CBC_POP_BLOCK
+  17 : CBC_PUSH_LITERAL idx:2(ident)->ident(func)
+  19 : CBC_TYPEOF_IDENT idx:1(ident)->ident(ident)
+  21 : CBC_CALL1_BLOCK
+  22 : CBC_PUSH_TWO_LITERALS idx:2(ident)->ident(func) idx:5(lit)->string(xx)
+  25 : CBC_TYPEOF
+  26 : CBC_CALL1_BLOCK
+  27 : CBC_PUSH_LITERAL idx:0(ident)->ident(next_statement)
+  29 : CBC_POP_BLOCK
+  30 : CBC_PUSH_TWO_LITERALS idx:2(ident)->ident(func) idx:3(ident)->ident(arg)
+  33 : CBC_TYPEOF_IDENT idx:1(ident)->ident(ident)
+  35 : CBC_CALL2_BLOCK
+  36 : CBC_PUSH_THREE_LITERALS idx:2(ident)->ident(func) idx:3(ident)->ident(arg) idx:5(lit)->string(xx)
+  40 : CBC_TYPEOF
+  41 : CBC_CALL2_BLOCK
+  42 : CBC_PUSH_LITERAL idx:0(ident)->ident(next_statement)
+  44 : CBC_POP_BLOCK
+  45 : CBC_PUSH_PROP_LITERAL_LITERAL idx:4(ident)->ident(a) idx:6(lit)->string(b)
+  48 : CBC_TYPEOF
+  49 : CBC_POP_BLOCK
+  50 : CBC_PUSH_LITERAL idx:0(ident)->ident(next_statement)
+  52 : CBC_POP_BLOCK
+  53 : CBC_LOGICAL_NOT_LITERAL idx:1(ident)->ident(ident)
+  55 : CBC_POP_BLOCK
+  56 : CBC_LOGICAL_NOT_LITERAL idx:5(lit)->string(xx)
+  58 : CBC_POP_BLOCK
+  59 : CBC_PUSH_LITERAL idx:0(ident)->ident(next_statement)
+  61 : CBC_POP_BLOCK
+  62 : CBC_PUSH_TWO_LITERALS idx:2(ident)->ident(func) idx:1(ident)->ident(ident)
+  65 : CBC_LOGICAL_NOT
+  66 : CBC_CALL1_BLOCK
+  67 : CBC_PUSH_TWO_LITERALS idx:2(ident)->ident(func) idx:5(lit)->string(xx)
+  70 : CBC_LOGICAL_NOT
+  71 : CBC_CALL1_BLOCK
+  72 : CBC_PUSH_LITERAL idx:0(ident)->ident(next_statement)
+  74 : CBC_POP_BLOCK
+  75 : CBC_PUSH_THREE_LITERALS idx:2(ident)->ident(func) idx:3(ident)->ident(arg) idx:1(ident)->ident(ident)
+  79 : CBC_LOGICAL_NOT
+  80 : CBC_CALL2_BLOCK
+  81 : CBC_PUSH_THREE_LITERALS idx:2(ident)->ident(func) idx:3(ident)->ident(arg) idx:5(lit)->string(xx)
+  85 : CBC_LOGICAL_NOT
+  86 : CBC_CALL2_BLOCK
+  87 : CBC_PUSH_LITERAL idx:0(ident)->ident(next_statement)
+  89 : CBC_POP_BLOCK
+  90 : CBC_RETURN_WITH_BLOCK
+
+Byte code size: 91 bytes
+
+Script parsing successfully completed. Total byte code size: 92 bytes
+
+--- Script parsing end ---
+

@@ -1,0 +1,9 @@
+
+--- Script parsing start ---
+
+  [  1] CBC_PUSH_LITERAL idx:0->ident(x)
+  [  0] CBC_POP_BLOCK
+
+--- Script parsing end ---
+
+Parse error 'While expected for do-while loop.' at line: 4 col: 23

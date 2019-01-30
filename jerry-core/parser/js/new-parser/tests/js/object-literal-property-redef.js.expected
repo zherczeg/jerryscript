@@ -1,0 +1,192 @@
+
+--- Script parsing start ---
+
+  [  1] CBC_CREATE_OBJECT
+
+--- Function parsing start ---
+
+
+Final byte code dump:
+
+  Maximum stack depth: 0
+  Flags: [small_lit_enc,no_lexical_env]
+  Argument range end: 0
+  Register range end: 0
+  Identifier range end: 0
+  Const literal range end: 0
+  Literal range end: 0
+
+   0 : CBC_RETURN_WITH_BLOCK
+
+Byte code size: 1 bytes
+
+--- Function parsing end ---
+
+  [  1] CBC_EXT_SET_GETTER idx:1->string(x) idx:2->function
+
+--- Function parsing start ---
+
+
+Final byte code dump:
+
+  Maximum stack depth: 1
+  Flags: [small_lit_enc,no_lexical_env]
+  Argument range end: 1
+  Register range end: 1
+  Identifier range end: 1
+  Const literal range end: 1
+  Literal range end: 1
+
+   0 : CBC_RETURN_WITH_BLOCK
+
+Byte code size: 1 bytes
+
+--- Function parsing end ---
+
+  [  1] CBC_EXT_SET_SETTER idx:1->string(x) idx:3->function
+  [  2] CBC_PUSH_NUMBER_POS_BYTE number:6
+  [  1] CBC_SET_PROPERTY idx:4->string(y)
+
+--- Function parsing start ---
+
+
+Final byte code dump:
+
+  Maximum stack depth: 0
+  Flags: [small_lit_enc,no_lexical_env]
+  Argument range end: 0
+  Register range end: 0
+  Identifier range end: 0
+  Const literal range end: 0
+  Literal range end: 0
+
+   0 : CBC_RETURN_WITH_BLOCK
+
+Byte code size: 1 bytes
+
+--- Function parsing end ---
+
+  [  1] CBC_EXT_SET_GETTER idx:5->string(z) idx:6->function
+
+--- Function parsing start ---
+
+
+Final byte code dump:
+
+  Maximum stack depth: 1
+  Flags: [small_lit_enc,no_lexical_env]
+  Argument range end: 1
+  Register range end: 1
+  Identifier range end: 1
+  Const literal range end: 1
+  Literal range end: 1
+
+   0 : CBC_RETURN_WITH_BLOCK
+
+Byte code size: 1 bytes
+
+--- Function parsing end ---
+
+  [  1] CBC_EXT_SET_SETTER idx:5->string(z) idx:7->function
+  [  0] CBC_ASSIGN_SET_IDENT_BLOCK idx:0->ident(a)
+  [  1] CBC_CREATE_OBJECT
+  [  2] CBC_PUSH_NUMBER_POS_BYTE number:1
+  [  1] CBC_SET_PROPERTY idx:9->string(v)
+
+--- Function parsing start ---
+
+
+Final byte code dump:
+
+  Maximum stack depth: 0
+  Flags: [small_lit_enc,no_lexical_env]
+  Argument range end: 0
+  Register range end: 0
+  Identifier range end: 0
+  Const literal range end: 0
+  Literal range end: 0
+
+   0 : CBC_RETURN_WITH_BLOCK
+
+Byte code size: 1 bytes
+
+--- Function parsing end ---
+
+  [  1] CBC_EXT_SET_GETTER idx:10->string(f) idx:11->function
+
+--- Function parsing start ---
+
+
+Final byte code dump:
+
+  Maximum stack depth: 1
+  Flags: [small_lit_enc,no_lexical_env]
+  Argument range end: 1
+  Register range end: 1
+  Identifier range end: 1
+  Const literal range end: 1
+  Literal range end: 1
+
+   0 : CBC_RETURN_WITH_BLOCK
+
+Byte code size: 1 bytes
+
+--- Function parsing end ---
+
+  [  1] CBC_EXT_SET_SETTER idx:10->string(f) idx:12->function
+
+--- Function parsing start ---
+
+
+Final byte code dump:
+
+  Maximum stack depth: 0
+  Flags: [small_lit_enc,no_lexical_env]
+  Argument range end: 0
+  Register range end: 0
+  Identifier range end: 0
+  Const literal range end: 0
+  Literal range end: 0
+
+   0 : CBC_RETURN_WITH_BLOCK
+
+Byte code size: 1 bytes
+
+--- Function parsing end ---
+
+  [  1] CBC_EXT_SET_GETTER idx:10->string(f) idx:13->function
+  [  0] CBC_ASSIGN_SET_IDENT_BLOCK idx:8->ident(b)
+
+Final byte code dump:
+
+  Maximum stack depth: 2
+  Flags: [small_lit_enc]
+  Argument range end: 0
+  Register range end: 0
+  Identifier range end: 2
+  Const literal range end: 7
+  Literal range end: 14
+
+   0 : CBC_CREATE_OBJECT
+   1 : CBC_EXT_SET_GETTER idx:2(lit)->string(x) idx:7(lit)->function
+   5 : CBC_EXT_SET_SETTER idx:2(lit)->string(x) idx:8(lit)->function
+   9 : CBC_PUSH_NUMBER_POS_BYTE number:6
+  11 : CBC_SET_PROPERTY idx:3(lit)->string(y)
+  13 : CBC_EXT_SET_GETTER idx:4(lit)->string(z) idx:9(lit)->function
+  17 : CBC_EXT_SET_SETTER idx:4(lit)->string(z) idx:10(lit)->function
+  21 : CBC_ASSIGN_SET_IDENT_BLOCK idx:0(ident)->ident(a)
+  23 : CBC_CREATE_OBJECT
+  24 : CBC_PUSH_NUMBER_POS_BYTE number:1
+  26 : CBC_SET_PROPERTY idx:5(lit)->string(v)
+  28 : CBC_EXT_SET_GETTER idx:6(lit)->string(f) idx:11(lit)->function
+  32 : CBC_EXT_SET_SETTER idx:6(lit)->string(f) idx:12(lit)->function
+  36 : CBC_EXT_SET_GETTER idx:6(lit)->string(f) idx:13(lit)->function
+  40 : CBC_ASSIGN_SET_IDENT_BLOCK idx:1(ident)->ident(b)
+  42 : CBC_RETURN_WITH_BLOCK
+
+Byte code size: 43 bytes
+
+Script parsing successfully completed. Total byte code size: 50 bytes
+
+--- Script parsing end ---
+

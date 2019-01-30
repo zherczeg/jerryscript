@@ -1,0 +1,21 @@
+
+--- Script parsing start ---
+
+  Note: switch to strict mode
+
+  [  1] CBC_PUSH_LITERAL idx:0->string(use strict)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_NUMBER_POS_BYTE number:1
+  [  2] CBC_EXT_PUSH_UNDEFINED_BASE
+  [  1] CBC_DELETE_PUSH_RESULT
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_LITERAL idx:1->ident(a)
+  [  1] CBC_CALL0_PUSH_RESULT
+  [  2] CBC_EXT_PUSH_UNDEFINED_BASE
+  [  1] CBC_DELETE_PUSH_RESULT
+  [  0] CBC_POP_BLOCK
+  [  0] CBC_POST_INCR_IDENT_BLOCK idx:1->ident(a)
+
+--- Script parsing end ---
+
+Parse error 'Deleting identifier is not allowed in strict mode.' at line: 10 col: 9

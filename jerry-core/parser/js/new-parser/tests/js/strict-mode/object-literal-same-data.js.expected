@@ -1,0 +1,40 @@
+
+--- Script parsing start ---
+
+  Note: switch to strict mode
+
+  [  1] CBC_PUSH_LITERAL idx:0->string(use strict)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_CREATE_OBJECT
+  [  2] CBC_PUSH_NUMBER_POS_BYTE number:5
+  [  1] CBC_SET_PROPERTY idx:2->string(x)
+  [  2] CBC_PUSH_NUMBER_POS_BYTE number:6
+  [  1] CBC_SET_PROPERTY idx:2->string(x)
+  [  0] CBC_ASSIGN_SET_IDENT_BLOCK idx:1->ident(a)
+
+Final byte code dump:
+
+  Maximum stack depth: 2
+  Flags: [small_lit_enc,strict_mode]
+  Argument range end: 0
+  Register range end: 0
+  Identifier range end: 1
+  Const literal range end: 3
+  Literal range end: 3
+
+   0 : CBC_PUSH_LITERAL idx:1(lit)->string(use strict)
+   2 : CBC_POP_BLOCK
+   3 : CBC_CREATE_OBJECT
+   4 : CBC_PUSH_NUMBER_POS_BYTE number:5
+   6 : CBC_SET_PROPERTY idx:2(lit)->string(x)
+   8 : CBC_PUSH_NUMBER_POS_BYTE number:6
+  10 : CBC_SET_PROPERTY idx:2(lit)->string(x)
+  12 : CBC_ASSIGN_SET_IDENT_BLOCK idx:0(ident)->ident(a)
+  14 : CBC_RETURN_WITH_BLOCK
+
+Byte code size: 15 bytes
+
+Script parsing successfully completed. Total byte code size: 15 bytes
+
+--- Script parsing end ---
+
